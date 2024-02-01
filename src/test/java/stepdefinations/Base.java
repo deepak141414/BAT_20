@@ -2,7 +2,9 @@ package stepdefinations;
 
 import org.openqa.selenium.WebDriver;
 
+
 import pageObject.AdminPage;
+import pageObject.Vendor;
 import utilities.ReadConfig;
 
 public class Base {
@@ -12,5 +14,16 @@ public class Base {
 	public AdminPage ad;
 	
 	public ReadConfig readconfig;
+	
+	public Vendor vendor;
+	
+	
+
+
+	
+	
+
+	
+
 
 }

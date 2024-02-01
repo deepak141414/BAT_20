@@ -2,7 +2,6 @@ package stepdefinations;
 
 import java.io.File;
 import java.io.IOException;
-import java.sql.Driver;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
@@ -19,6 +18,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pageObject.AdminPage;
+import pageObject.Vendor;
 import utilities.ReadConfig;
 
 public class StepDefination extends Base {
@@ -85,6 +85,39 @@ public class StepDefination extends Base {
 		driver.close();
 	    
 	}
+	
+	@When("User click on vendor item")
+	public void user_click_on_vendor_item() throws Exception {
+		vendor=new Vendor(driver);
+		vendor.clickOnVendors();
+		Thread.sleep(2000);
+		
+		
+	}
+
+	@Then("User can view vendor page")
+	public void user_can_view_vendor_page() throws Exception {
+		Assert.assertEquals("vendors / nopcommerce administration",vendor.getPageTitle());
+		Thread.sleep(2000);
+		
+	
+	}
+
+	@When("User enter Vendor name as {string} and password as {string}")
+	public void user_enter_vendor_name_as_and_password_as(String venName, String venemail) throws Exception {
+		vendor.searchName(venName);
+		vendor.searchEmail(venemail);
+		Thread.sleep(2000);
+	    
+	}
+
+	@When("User click on Search button")
+	public void user_click_on_search_button() throws Exception {
+		vendor.clickOnSearchButton();
+		Thread.sleep(2000);
+	   
+	}
+
 	@After
 	public void tearDown(Scenario sc) throws Exception {
 		System.out.println("Tear down method execute after every Scenario");	
